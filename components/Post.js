@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/outline";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 
-function Post({ id, username, userImg, img }) {
+function Post({ id, username, userImg, img, caption }) {
   return (
     <div className="bg-white my-7 border rounded-sm">
       {/* Header */}
@@ -32,6 +32,10 @@ function Post({ id, username, userImg, img }) {
         <BookmarkIcon className="btn" />
       </div>
       {/* Caption */}
+      <p className="p-5 truncate">
+        <span className="font0bold mr-1">{username} </span>
+        {caption}
+      </p>
       {/* Comment */}
       {/* Input box */}
     </div>
