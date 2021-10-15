@@ -10,4 +10,12 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  //   theme: {
+  //     logo: "https://links.papareact.com/sq0",
+  //     brandColor: "#F13287",
+  //     colorSchema: "auto",
+  //   },
+  pages: {
+    signIn: "/auth/signin",
+  },
 });
