@@ -4,7 +4,11 @@ import { modalState } from "../atoms/modalAtom";
 function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
 
-  return <div>{open && <p>The Modal is open</p>}</div>;
+  return (
+    <div>
+      <h1></h1>
+    </div>
+  );
 }
 
 export default Modal;
