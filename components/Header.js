@@ -29,7 +29,10 @@ function Header() {
             objectFit="contain"
           />
         </div>
-        <div className="relative w-10 lg:hidden cursor-pointer">
+        <div
+          onClick={() => router.push("/")}
+          className="relative w-10 lg:hidden cursor-pointer"
+        >
           <Image
             src="https://links.papareact.com/jjm"
             layout="fill"
@@ -53,7 +56,7 @@ function Header() {
 
         {/* Right */}
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="navBtn " />
+          <HomeIcon onClick={() => router.push("/")} className="navBtn " />
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
           {session ? (
             <>
