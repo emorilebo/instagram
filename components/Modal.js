@@ -5,9 +5,9 @@ function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
 
   return (
-    <div>
+    <Transition>
       <h1></h1>
-    </div>
+    </Transition>
   );
 }
 
