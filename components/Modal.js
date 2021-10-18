@@ -4,9 +4,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import { CameraIcon } from "@heroicons/react/solid";
 import { db, storage } from "../firebase";
-import { addDoc, serverTimestamp } from "@firebase/firestore";
+import { addDoc, doc, serverTimestamp, updateDoc } from "@firebase/firestore";
 import { useSession } from "next-auth/react";
-import { ref } from "@firebase/storage";
+import { ref, getDownloadURL, uploadString } from "@firebase/storage";
 
 function Modal() {
   const { data: session } = useSession();
@@ -36,6 +36,17 @@ function Modal() {
     console.log("New doc added with ID", docRef.id);
 
     const imageRef = ref(storage, `posts${docRef.id}/image`);
+    await uploadString(imageRef, selectedFile, "data_url").then(
+      async (snapshot) => {
+        const downloadURL = await getDownloadURL(imageRef);
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image: downloadURL,
+        });
+      }
+    );
+    setOpen(false);
+    setLoading(false);
+    setSelectedFile(null);
   };
 
   const addImageToPost = (e) => {
