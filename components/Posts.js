@@ -31,14 +31,13 @@ function Posts() {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(
+    return onSnapshot(
       query(collection(db, "posts"), orderBy("timestamp", "desc")),
       (snapshot) => {
         setPost(snapshot.docs);
       }
     );
-    return unsubscribe();
-  }, []);
+  }, [db]);
   return (
     <div>
       {posts.map((post) => (
