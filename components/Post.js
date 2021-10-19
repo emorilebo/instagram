@@ -18,6 +18,7 @@ import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import Moment from "react-moment";
 
 function Post({ id, username, userImg, img, caption }) {
   const { data: session } = useSession();
@@ -91,10 +92,13 @@ function Post({ id, username, userImg, img, caption }) {
                 src={comment.data().userImage}
                 alt=""
               />
-              <p>
-                {" "}
-                <span>{comment.data().username}</span> {comment.data().comment}
+              <p className="text-sm flex-1">
+                <span className="font-bold">{comment.data().username}</span>{" "}
+                {comment.data().comment}
               </p>
+              <Moment fromNow className="pr-5 text-xs">
+                {comment.data().timestamp?.toDate()}
+              </Moment>
             </div>
           ))}
         </div>
