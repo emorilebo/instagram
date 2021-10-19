@@ -91,6 +91,10 @@ function Post({ id, username, userImg, img, caption }) {
                 src={comment.data().userImage}
                 alt=""
               />
+              <p>
+                {" "}
+                <span>{comment.data().username}</span> {comment.data().comment}
+              </p>
             </div>
           ))}
         </div>
