@@ -25,7 +25,7 @@ function Posts() {
           id={post.id}
           username={post.data().username}
           userImg={post.data().profileImg}
-          img={post.data().img}
+          img={post.data().image}
           caption={post.data().caption}
         />
       ))}
