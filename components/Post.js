@@ -27,6 +27,7 @@ function Post({ id, username, userImg, img, caption }) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
+  const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(
     () =>
@@ -47,6 +48,12 @@ function Post({ id, username, userImg, img, caption }) {
       ),
     [db, id]
   );
+
+  useEffect(() => {
+    setHasLiked(
+      likes.findIndex((like) => (like.id === session?.user?.uid) !== -1)
+    );
+  }, [likes]);
 
   const likePost = async () => {
     await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
